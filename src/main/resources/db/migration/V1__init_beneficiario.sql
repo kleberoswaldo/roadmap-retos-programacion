@@ -1,0 +1,21 @@
+CREATE TABLE IF NOT EXISTS beneficiario (
+	id BIGSERIAL PRIMARY KEY,
+	identificacion VARCHAR(20) NOT NULL,
+	nombres VARCHAR(120) NOT NULL,
+	apellidos VARCHAR(120) NOT NULL,
+	fecha_nacimiento DATE,
+	estado_civil VARCHAR(20),
+	ingresos_mensuales NUMERIC(15,2),
+	provincia VARCHAR(60),
+	canton VARCHAR(60),
+	parroquia VARCHAR(60),
+	direccion VARCHAR(200),
+	telefono VARCHAR(30),
+	correo VARCHAR(120),
+	estado_beneficiario VARCHAR(30) NOT NULL,
+	creado_en TIMESTAMP NOT NULL DEFAULT NOW(),
+	actualizado_en TIMESTAMP NULL,
+	version INTEGER,
+	CONSTRAINT uk_beneficiario_identificacion UNIQUE (identificacion),
+	CONSTRAINT uk_beneficiario_correo UNIQUE (correo)
+);
